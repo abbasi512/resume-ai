@@ -1,7 +1,6 @@
 // filepath: src/components/builder/tabs/ProjectsTab.tsx
 "use client";
 
-import { useState } from "react";
 import type { ResumeProject } from "@/types/resume";
 import { Plus, Trash2, FolderKanban } from "lucide-react";
 

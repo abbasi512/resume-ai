@@ -1,7 +1,6 @@
 // filepath: src/components/builder/tabs/LanguagesTab.tsx
 "use client";
 
-import { useState } from "react";
 import type { ResumeLanguage } from "@/types/resume";
 import { Plus, Trash2, Globe } from "lucide-react";
 

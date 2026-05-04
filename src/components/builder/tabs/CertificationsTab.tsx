@@ -1,7 +1,6 @@
 // filepath: src/components/builder/tabs/CertificationsTab.tsx
 "use client";
 
-import { useState } from "react";
 import type { ResumeCertification } from "@/types/resume";
 import { Plus, Trash2, Award } from "lucide-react";
 import { cn } from "@/lib/utils";

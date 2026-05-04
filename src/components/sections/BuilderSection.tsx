@@ -1,7 +1,9 @@
 // src/components/sections/BuilderSection.tsx
 "use client";
 
-import ResumeBuilder from "@/components/builder/ResumeBuilder";
+import dynamic from "next/dynamic";
+
+const ResumeBuilder = dynamic(() => import("@/components/builder/ResumeBuilder"), { ssr: false });
 
 export default function BuilderSection() {
   return (
