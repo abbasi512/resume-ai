@@ -3,7 +3,7 @@
 
 import { TEMPLATE_INFO } from "@/lib/defaults";
 import type { ResumeTemplate } from "@/types/resume";
-import { Layout, BookOpen, Minus, Palette, Briefcase } from "lucide-react";
+import { Layout, BookOpen, Minus, Palette, Briefcase, PanelLeft, Zap } from "lucide-react";
 
 interface TemplateSelectorProps {
   currentTemplate: ResumeTemplate;
@@ -16,6 +16,8 @@ const iconMap = {
   minimal: Minus,
   creative: Palette,
   executive: Briefcase,
+  sidebar: PanelLeft,
+  sharp: Zap,
 };
 
 export default function TemplateSelector({ currentTemplate, onSelect }: TemplateSelectorProps) {

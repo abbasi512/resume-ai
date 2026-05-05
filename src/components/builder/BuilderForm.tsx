@@ -1,4 +1,3 @@
-// filepath: src/components/builder/BuilderForm.tsx
 "use client";
 
 import type {
@@ -24,8 +23,12 @@ interface BuilderFormProps {
   activeTab: BuilderTab;
   data: ResumeData;
   onUpdateBasics: (updates: Partial<ResumeBasics>) => void;
-  onUpdateExperience: (updates: Partial<ResumeExperience>) => void;
-  onUpdateEducation: (updates: Partial<ResumeEducation>) => void;
+  onAddExperience: () => void;
+  onUpdateExperience: (id: string, updates: Partial<ResumeExperience>) => void;
+  onRemoveExperience: (id: string) => void;
+  onAddEducation: () => void;
+  onUpdateEducation: (id: string, updates: Partial<ResumeEducation>) => void;
+  onRemoveEducation: (id: string) => void;
   onUpdateSkills: (updates: Partial<ResumeSkills>) => void;
   onUpdateCertifications: (data: ResumeCertification[]) => void;
   onUpdateLanguages: (data: ResumeLanguage[]) => void;
@@ -36,8 +39,12 @@ export default function BuilderForm({
   activeTab,
   data,
   onUpdateBasics,
+  onAddExperience,
   onUpdateExperience,
+  onRemoveExperience,
+  onAddEducation,
   onUpdateEducation,
+  onRemoveEducation,
   onUpdateSkills,
   onUpdateCertifications,
   onUpdateLanguages,
@@ -49,35 +56,33 @@ export default function BuilderForm({
         <BasicsTab data={data.basics} onUpdate={onUpdateBasics} />
       )}
       {activeTab === "experience" && (
-        <ExperienceTab data={data.experience} onUpdate={onUpdateExperience} jobTitle={data.basics.jobTitle} />
+        <ExperienceTab
+          data={data.experiences}
+          jobTitle={data.basics.jobTitle}
+          onAdd={onAddExperience}
+          onUpdate={onUpdateExperience}
+          onRemove={onRemoveExperience}
+        />
       )}
       {activeTab === "education" && (
-        <EducationTab data={data.education} onUpdate={onUpdateEducation} />
+        <EducationTab
+          data={data.educations}
+          onAdd={onAddEducation}
+          onUpdate={onUpdateEducation}
+          onRemove={onRemoveEducation}
+        />
       )}
       {activeTab === "skills" && (
-        <SkillsTab
-          data={data.skills}
-          jobTitle={data.basics.jobTitle}
-          onUpdate={onUpdateSkills}
-        />
+        <SkillsTab data={data.skills} jobTitle={data.basics.jobTitle} onUpdate={onUpdateSkills} />
       )}
       {activeTab === "certifications" && (
-        <CertificationsTab
-          data={data.certifications || []}
-          onUpdate={onUpdateCertifications}
-        />
+        <CertificationsTab data={data.certifications || []} onUpdate={onUpdateCertifications} />
       )}
       {activeTab === "languages" && (
-        <LanguagesTab
-          data={data.languages || []}
-          onUpdate={onUpdateLanguages}
-        />
+        <LanguagesTab data={data.languages || []} onUpdate={onUpdateLanguages} />
       )}
       {activeTab === "projects" && (
-        <ProjectsTab
-          data={data.projects || []}
-          onUpdate={onUpdateProjects}
-        />
+        <ProjectsTab data={data.projects || []} onUpdate={onUpdateProjects} />
       )}
     </div>
   );

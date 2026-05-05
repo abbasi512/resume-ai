@@ -17,6 +17,8 @@ const config: Config = {
           DEFAULT: "#1a1a2e",
           50: "#f0f0f7",
           100: "#e1e1ef",
+          200: "#c3c3df",
+          300: "#9d9dca",
           900: "#1a1a2e",
         },
         accent: {
@@ -26,10 +28,14 @@ const config: Config = {
           "purple-border": "#e0dafe",
         },
       },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
       animation: {
         "dot-bounce": "dotBounce 1.2s infinite",
-        "fade-in": "fadeIn 0.5s ease forwards",
-        "slide-up": "slideUp 0.4s ease forwards",
+        "fade-in": "fadeIn 0.4s ease forwards",
+        "slide-up": "slideUp 0.35s ease forwards",
+        pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       keyframes: {
         dotBounce: {
@@ -41,9 +47,12 @@ const config: Config = {
           to: { opacity: "1" },
         },
         slideUp: {
-          from: { opacity: "0", transform: "translateY(12px)" },
+          from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+      },
+      boxShadow: {
+        soft: "0 2px 12px rgba(0,0,0,0.06)",
       },
     },
   },

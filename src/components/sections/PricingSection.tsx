@@ -1,138 +1,166 @@
-// src/components/sections/PricingSection.tsx
+"use client";
 
-interface PlanFeature {
-  label: string;
-}
+import { useState } from "react";
+import { Check } from "lucide-react";
 
 interface Plan {
   name: string;
-  price: string;
-  period: string;
+  monthly: number;
+  annual: number;
   description: string;
-  features: PlanFeature[];
+  features: string[];
   cta: string;
   popular?: boolean;
+  ctaAction?: () => void;
 }
 
 const PLANS: Plan[] = [
   {
     name: "Free",
-    price: "$0",
-    period: "/ forever",
+    monthly: 0,
+    annual: 0,
     description: "Perfect for trying it out",
-    features: [
-      { label: "1 resume" },
-      { label: "5 AI generations" },
-      { label: "3 templates" },
-      { label: "PDF export" },
-    ],
+    features: ["1 resume", "5 AI generations / month", "3 templates", "PDF export"],
     cta: "Get started free",
   },
   {
     name: "Pro",
-    price: "$12",
-    period: "/ month",
+    monthly: 12,
+    annual: 9,
     description: "For active job seekers",
     features: [
-      { label: "Unlimited resumes" },
-      { label: "Unlimited AI generations" },
-      { label: "All 30+ templates" },
-      { label: "ATS optimization" },
-      { label: "Job tailoring" },
-      { label: "Interview prep" },
+      "Unlimited resumes",
+      "Unlimited AI generations",
+      "All 5 templates",
+      "ATS keyword optimization",
+      "Job tailoring",
+      "Interview prep AI",
     ],
     cta: "Start 7-day free trial",
     popular: true,
   },
   {
     name: "Team",
-    price: "$29",
-    period: "/ month",
+    monthly: 29,
+    annual: 22,
     description: "For career coaches & teams",
     features: [
-      { label: "Up to 10 users" },
-      { label: "Everything in Pro" },
-      { label: "Client portal" },
-      { label: "Analytics dashboard" },
-      { label: "Priority support" },
+      "Up to 10 users",
+      "Everything in Pro",
+      "Client portal",
+      "Analytics dashboard",
+      "Priority support",
     ],
     cta: "Contact sales →",
   },
 ];
 
 export default function PricingSection() {
+  const [annual, setAnnual] = useState(false);
+
+  const scrollToBuilder = () => {
+    document.getElementById("builder")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section
-      id="pricing"
-      className="py-20 px-8 bg-gray-50 border-t border-black/10 mt-[72px]"
-    >
-      <div className="max-w-[860px] mx-auto">
-        {/* Header */}
+    <section id="pricing" className="py-24 px-6 border-t border-black/[0.06]">
+      <div className="max-w-[900px] mx-auto">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-4xl text-brand-900 mb-2.5">
+          <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-accent-purple mb-3">
+            Pricing
+          </p>
+          <h2 className="font-serif text-[38px] text-brand-900 mb-3 leading-tight">
             Simple, honest pricing
           </h2>
-          <p className="text-gray-500">
+          <p className="text-[15px] text-gray-500 mb-8">
             Start free, upgrade when you&apos;re ready to get serious
           </p>
-        </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {PLANS.map((plan) => (
-            <div
-              key={plan.name}
-              className={`relative rounded-2xl p-7 border bg-white transition-shadow ${
-                plan.popular
-                  ? "border-accent-purple border-2 shadow-lg shadow-accent-purple/10"
-                  : "border-black/10"
+          {/* Toggle */}
+          <div className="inline-flex items-center gap-3 bg-gray-100 rounded-full px-1.5 py-1.5">
+            <button
+              onClick={() => setAnnual(false)}
+              className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all ${
+                !annual ? "bg-white text-brand-900 shadow-sm" : "text-gray-500"
               }`}
             >
-              {plan.popular && (
-                <div className="absolute -top-[13px] left-1/2 -translate-x-1/2 bg-accent-purple text-white text-[11px] font-semibold px-3.5 py-1 rounded-full whitespace-nowrap tracking-wide">
-                  Most popular
-                </div>
-              )}
-
-              <div className="text-[13px] font-semibold text-gray-400 tracking-widest uppercase mb-2.5">
-                {plan.name}
-              </div>
-              <div className="font-serif text-[38px] text-brand-900 leading-none">
-                {plan.price}{" "}
-                <span className="font-sans text-sm font-normal text-gray-400">
-                  {plan.period}
-                </span>
-              </div>
-              <div className="text-[13px] text-gray-400 mt-2 mb-5 leading-snug">
-                {plan.description}
-              </div>
-
-              <ul className="flex flex-col gap-2.5 mb-6">
-                {plan.features.map((f) => (
-                  <li
-                    key={f.label}
-                    className="text-[13px] flex items-center gap-2"
-                  >
-                    <span className="w-3.5 h-3.5 rounded-full border-[1.5px] border-green-500 bg-green-50 flex-shrink-0" />
-                    {f.label}
-                  </li>
-                ))}
-              </ul>
-
-              <button
-                className={`w-full py-3 rounded-lg text-[13px] font-medium transition-all ${
-                  plan.popular
-                    ? "bg-accent-purple text-white hover:opacity-90"
-                    : "border border-black/10 text-brand-900 hover:bg-gray-50"
-                }`}
-              >
-                {plan.cta}
-              </button>
-            </div>
-          ))}
+              Monthly
+            </button>
+            <button
+              onClick={() => setAnnual(true)}
+              className={`px-4 py-1.5 rounded-full text-[13px] font-medium transition-all flex items-center gap-1.5 ${
+                annual ? "bg-white text-brand-900 shadow-sm" : "text-gray-500"
+              }`}
+            >
+              Annual
+              <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                −25%
+              </span>
+            </button>
+          </div>
         </div>
 
-        <p className="text-center mt-8 text-xs text-gray-400">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {PLANS.map((plan) => {
+            const price = annual ? plan.annual : plan.monthly;
+            return (
+              <div
+                key={plan.name}
+                className={`relative rounded-2xl p-7 border bg-white transition-all ${
+                  plan.popular
+                    ? "border-accent-purple border-2 shadow-xl shadow-accent-purple/10"
+                    : "border-black/[0.08] hover:border-black/20"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-accent-purple to-blue-500 text-white text-[11px] font-semibold px-4 py-1 rounded-full whitespace-nowrap">
+                    Most popular
+                  </div>
+                )}
+
+                <div className="text-[11px] font-bold text-gray-400 tracking-[0.14em] uppercase mb-2">
+                  {plan.name}
+                </div>
+                <div className="flex items-end gap-1 mb-1">
+                  <span className="font-serif text-[40px] text-brand-900 leading-none">
+                    {price === 0 ? "Free" : `$${price}`}
+                  </span>
+                  {price > 0 && (
+                    <span className="text-[13px] text-gray-400 mb-1.5">/ mo</span>
+                  )}
+                </div>
+                {annual && plan.annual > 0 && (
+                  <p className="text-[11px] text-emerald-600 font-medium mb-1">
+                    Billed ${plan.annual * 12}/yr — save ${(plan.monthly - plan.annual) * 12}
+                  </p>
+                )}
+                <p className="text-[12px] text-gray-400 mb-6">{plan.description}</p>
+
+                <ul className="flex flex-col gap-2.5 mb-7">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-[13px] text-brand-900">
+                      <Check size={14} className="text-emerald-500 flex-shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  onClick={plan.name === "Free" ? scrollToBuilder : undefined}
+                  className={`w-full py-2.5 rounded-xl text-[13px] font-semibold transition-all ${
+                    plan.popular
+                      ? "bg-gradient-to-r from-accent-purple to-blue-500 text-white hover:opacity-90 shadow-lg shadow-accent-purple/25"
+                      : "border border-black/10 text-brand-900 hover:bg-gray-50 hover:border-black/20"
+                  }`}
+                >
+                  {plan.cta}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="text-center mt-8 text-[12px] text-gray-400">
           All plans include SSL security, GDPR-compliant data handling, and 99.9% uptime SLA.
         </p>
       </div>

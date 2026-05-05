@@ -1,6 +1,4 @@
-// src/types/resume.ts
-
-export type ResumeTemplate = "modern" | "classic" | "minimal" | "creative" | "executive";
+export type ResumeTemplate = "modern" | "classic" | "minimal" | "creative" | "executive" | "sidebar" | "sharp";
 
 export interface ResumeBasics {
   firstName: string;
@@ -14,6 +12,7 @@ export interface ResumeBasics {
 }
 
 export interface ResumeExperience {
+  id: string;
   company: string;
   role: string;
   duration: string;
@@ -23,6 +22,7 @@ export interface ResumeExperience {
 }
 
 export interface ResumeEducation {
+  id: string;
   school: string;
   degree: string;
   graduationYear: string;
@@ -60,8 +60,8 @@ export interface ResumeProject {
 
 export interface ResumeData {
   basics: ResumeBasics;
-  experience: ResumeExperience;
-  education: ResumeEducation;
+  experiences: ResumeExperience[];
+  educations: ResumeEducation[];
   skills: ResumeSkills;
   certifications?: ResumeCertification[];
   languages?: ResumeLanguage[];
