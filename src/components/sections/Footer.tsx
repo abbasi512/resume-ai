@@ -1,7 +1,22 @@
-const LINKS = {
-  Product: ["Features", "Templates", "Pricing", "Changelog"],
-  Resources: ["Blog", "Resume tips", "Interview prep", "ATS guide"],
-  Company: ["About", "Privacy", "Terms", "Support"],
+const LINKS: Record<string, { label: string; href: string }[]> = {
+  Product: [
+    { label: "Features",     href: "/#features" },
+    { label: "Templates",    href: "/#builder" },
+    { label: "Pricing",      href: "/#pricing" },
+    { label: "Resume Builder", href: "/#builder" },
+  ],
+  Resources: [
+    { label: "Resume tips",   href: "/#features" },
+    { label: "ATS guide",     href: "/#features" },
+    { label: "Interview prep", href: "/#features" },
+    { label: "Sitemap",       href: "/sitemap-page" },
+  ],
+  Company: [
+    { label: "About us",   href: "/about"   },
+    { label: "Contact",    href: "/contact" },
+    { label: "Privacy",    href: "/privacy" },
+    { label: "Sitemap",    href: "/sitemap-page" },
+  ],
 };
 
 export default function Footer() {
@@ -28,9 +43,9 @@ export default function Footer() {
               <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-gray-400 mb-4">{heading}</p>
               <ul className="flex flex-col gap-2.5">
                 {items.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-[13px] text-gray-500 hover:text-brand-900 transition-colors">
-                      {item}
+                  <li key={item.label}>
+                    <a href={item.href} className="text-[13px] text-gray-500 hover:text-brand-900 transition-colors">
+                      {item.label}
                     </a>
                   </li>
                 ))}

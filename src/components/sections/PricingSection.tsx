@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check } from "lucide-react";
+import Link from "next/link";
 
 interface Plan {
   name: string;
@@ -145,16 +146,25 @@ export default function PricingSection() {
                   ))}
                 </ul>
 
-                <button
-                  onClick={plan.name === "Free" ? scrollToBuilder : undefined}
-                  className={`w-full py-2.5 rounded-xl text-[13px] font-semibold transition-all ${
-                    plan.popular
-                      ? "bg-gradient-to-r from-accent-purple to-blue-500 text-white hover:opacity-90 shadow-lg shadow-accent-purple/25"
-                      : "border border-black/10 text-brand-900 hover:bg-gray-50 hover:border-black/20"
-                  }`}
-                >
-                  {plan.cta}
-                </button>
+                {plan.name === "Team" ? (
+                  <Link
+                    href="/contact"
+                    className={`block w-full py-2.5 rounded-xl text-[13px] font-semibold text-center transition-all border border-black/10 text-brand-900 hover:bg-gray-50 hover:border-black/20`}
+                  >
+                    {plan.cta}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={scrollToBuilder}
+                    className={`w-full py-2.5 rounded-xl text-[13px] font-semibold transition-all ${
+                      plan.popular
+                        ? "bg-gradient-to-r from-accent-purple to-blue-500 text-white hover:opacity-90 shadow-lg shadow-accent-purple/25"
+                        : "border border-black/10 text-brand-900 hover:bg-gray-50 hover:border-black/20"
+                    }`}
+                  >
+                    {plan.cta}
+                  </button>
+                )}
               </div>
             );
           })}

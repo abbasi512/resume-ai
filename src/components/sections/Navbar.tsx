@@ -1,12 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
-const NAV_LINKS = [
+const SCROLL_LINKS = [
   { label: "Features", id: "features" },
-  { label: "Builder", id: "builder" },
-  { label: "Pricing", id: "pricing" },
+  { label: "Builder",  id: "builder"  },
+  { label: "Pricing",  id: "pricing"  },
+];
+
+const PAGE_LINKS = [
+  { label: "About",   href: "/about"   },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -20,28 +26,35 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // navigated away from home — go home then scroll
+      window.location.href = `/#${id}`;
+    }
     setMobileOpen(false);
   };
 
   return (
     <nav
       className={`sticky top-0 z-50 bg-white/95 backdrop-blur-md transition-shadow ${
-        scrolled ? "shadow-sm border-b border-black/8" : "border-b border-black/[0.06]"
+        scrolled ? "shadow-sm border-b border-black/[0.08]" : "border-b border-black/[0.06]"
       }`}
     >
       <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[60px]">
+
         {/* Logo */}
-        <div className="flex items-center gap-2 font-serif text-[20px] text-brand-900 select-none">
+        <Link href="/" className="flex items-center gap-2 font-serif text-[20px] text-brand-900 select-none hover:opacity-80 transition-opacity">
           <div className="relative w-7 h-7 bg-accent-gold rounded-[6px] flex items-center justify-center">
             <div className="absolute inset-[5px] border-2 border-brand-900 rounded-[2px]" />
           </div>
           Resumé.ai
-        </div>
+        </Link>
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
-          {NAV_LINKS.map(({ label, id }) => (
+          {SCROLL_LINKS.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => scrollTo(id)}
@@ -50,18 +63,24 @@ export default function Navbar() {
               {label}
             </button>
           ))}
+          {PAGE_LINKS.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              className="px-4 py-2 text-[13px] text-gray-500 hover:text-brand-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+            >
+              {label}
+            </Link>
+          ))}
         </div>
 
-        {/* Desktop CTAs */}
+        {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-2">
-          <button className="px-4 py-2 text-[13px] font-medium text-gray-600 hover:text-brand-900 transition-colors">
-            Sign in
-          </button>
           <button
             onClick={() => scrollTo("builder")}
             className="px-4 py-2 text-[13px] bg-brand-900 text-white rounded-lg font-medium hover:bg-[#2d2d4e] transition-colors"
           >
-            Get started free →
+            Build free →
           </button>
         </div>
 
@@ -77,8 +96,8 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-black/8 bg-white px-6 py-4 flex flex-col gap-1">
-          {NAV_LINKS.map(({ label, id }) => (
+        <div className="md:hidden border-t border-black/[0.06] bg-white px-6 py-4 flex flex-col gap-1">
+          {SCROLL_LINKS.map(({ label, id }) => (
             <button
               key={id}
               onClick={() => scrollTo(id)}
@@ -87,13 +106,22 @@ export default function Navbar() {
               {label}
             </button>
           ))}
-          <div className="border-t border-black/8 mt-2 pt-3 flex flex-col gap-2">
-            <button className="text-left px-3 py-2.5 text-[14px] text-gray-600 font-medium">Sign in</button>
+          {PAGE_LINKS.map(({ label, href }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setMobileOpen(false)}
+              className="px-3 py-2.5 text-[14px] text-gray-600 hover:text-brand-900 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+            >
+              {label}
+            </Link>
+          ))}
+          <div className="border-t border-black/[0.06] mt-2 pt-3">
             <button
               onClick={() => scrollTo("builder")}
-              className="w-full py-2.5 text-[14px] bg-brand-900 text-white rounded-lg font-medium"
+              className="w-full py-2.5 text-[14px] bg-brand-900 text-white rounded-lg font-medium hover:bg-[#2d2d4e] transition-colors"
             >
-              Get started free →
+              Build free →
             </button>
           </div>
         </div>

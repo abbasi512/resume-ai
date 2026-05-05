@@ -8,6 +8,7 @@ import ResumePreview from "@/components/resume/ResumePreview";
 import TemplateSelector from "./TemplateSelector";
 import { pdf } from "@react-pdf/renderer";
 import ResumePDF from "@/components/resume/ResumePDF";
+import { trackEvent } from "@/lib/gtag";
 import {
   Download,
   Loader2,
@@ -39,6 +40,7 @@ function DownloadButton({ data }: { data: ResumeData }) {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      trackEvent("pdf_download", "resume", data.template ?? "modern");
     } catch (err) {
       console.error("PDF generation failed:", err);
       setError(true);
