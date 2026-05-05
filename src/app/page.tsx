@@ -10,6 +10,7 @@ import AdUnit from "@/components/ads/AdUnit";
 // adsense.google.com → Ads → By ad unit → Create ad unit → copy the slot ID
 const AD_SLOT_BETWEEN_FEATURES = "1234567890";
 const AD_SLOT_BETWEEN_PRICING  = "0987654321";
+//test
 
 export default function HomePage() {
   return (
