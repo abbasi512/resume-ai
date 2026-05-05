@@ -21,7 +21,7 @@ export default function HeroSection() {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-accent-gold/40 shadow-sm text-[12px] font-medium text-[#8b6f1a] mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse" />
-          Powered by Claude AI · Built for job seekers
+          Built by Tanzeel Abbas · Made for job seekers
         </div>
 
         {/* Headline */}

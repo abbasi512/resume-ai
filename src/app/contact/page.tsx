@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: "Why isn't the AI generating bullets?",
-    a: "The AI feature requires an Anthropic API key with available credits. If you're self-hosting, check your .env file. If you're using our hosted version and it's not working, please let us know via this form.",
+    a: "The AI feature requires a valid API configuration. If you're using our hosted version and it's not working, please let us know via this form and we'll look into it right away.",
   },
   {
     q: "Can I use Resume.ai for commercial purposes?",

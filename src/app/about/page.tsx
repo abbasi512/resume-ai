@@ -6,7 +6,7 @@ import Footer from "@/components/sections/Footer";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Resume.ai — our mission to make professional, ATS-optimized resumes accessible to every job seeker, powered by Claude AI.",
+    "Learn about Resume.ai — built by Tanzeel Abbas. Our mission is to make professional, ATS-optimized resumes accessible to every job seeker.",
   alternates: { canonical: "/about" },
 };
 
@@ -24,7 +24,7 @@ const VALUES = [
   },
   {
     title: "Honest AI, real results",
-    body: "We use Claude AI to write bullet points that accurately reflect your experience. No fabrication, no keyword stuffing — just clear, compelling language that gets past ATS filters and impresses hiring managers.",
+    body: "We use advanced AI to write bullet points that accurately reflect your experience. No fabrication, no keyword stuffing — just clear, compelling language that gets past ATS filters and impresses hiring managers.",
   },
   {
     title: "Your data stays yours",
@@ -56,7 +56,7 @@ export default function AboutPage() {
             </h1>
             <p className="text-[16px] text-gray-500 leading-[1.7] max-w-[520px] mx-auto">
               Resume.ai was built on one belief: the quality of your resume shouldn't depend
-              on how much money you can spend. We use Claude AI to level the playing field.
+              on how much money you can spend. We built Resume.ai to level the playing field.
             </p>
           </div>
         </section>
@@ -118,19 +118,19 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Technology */}
+        {/* Creator */}
         <section className="px-6 py-16 border-b border-black/[0.06] bg-gray-50/60">
           <div className="max-w-[760px] mx-auto text-center">
-            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-accent-purple mb-3">Technology</p>
-            <h2 className="font-serif text-[32px] text-brand-900 leading-tight mb-4">Powered by Claude AI</h2>
+            <p className="text-[11px] font-semibold tracking-[0.16em] uppercase text-accent-purple mb-3">Creator</p>
+            <h2 className="font-serif text-[32px] text-brand-900 leading-tight mb-4">Built by Tanzeel Abbas</h2>
             <p className="text-[15px] text-gray-500 leading-[1.7] max-w-[540px] mx-auto mb-8">
-              We use Anthropic&apos;s Claude — one of the most capable and safe AI models available — to
-              generate resume content. Claude is specifically trained to follow instructions
-              carefully and produce accurate, nuanced writing. No hallucinations, no invented credentials.
+              Resume.ai was designed and developed by Tanzeel Abbas with one goal in mind — making
+              professional, ATS-optimized resumes accessible to everyone. The AI writing engine
+              generates accurate, nuanced content with no hallucinations and no invented credentials.
             </p>
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-accent-gold/40 bg-white text-[13px] font-medium text-[#8b6f1a]">
               <span className="w-2 h-2 rounded-full bg-accent-gold animate-pulse" />
-              Built with Anthropic&apos;s Claude AI
+              Built by Tanzeel Abbas
             </div>
           </div>
         </section>

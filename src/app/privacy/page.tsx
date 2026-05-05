@@ -49,10 +49,10 @@ We do **not** sell, rent, or share your personal information with third parties 
   },
   {
     id: "ai-processing",
-    title: "4. AI processing (Anthropic Claude)",
-    content: `Resume content is generated using Anthropic's Claude AI. When you request AI-generated bullet points or skills, your job description and role information are sent to Anthropic's API. This data is processed according to Anthropic's privacy policy and data processing agreement.
+    title: "4. AI processing",
+    content: `Resume content is generated using an AI language model. When you request AI-generated bullet points or skills, your job description and role information are sent to our AI provider's API to generate content. This data is processed under our AI provider's privacy and data processing agreement.
 
-Anthropic does not use API inputs to train its models by default. We recommend you do not include highly sensitive personal information (e.g. national ID numbers, financial details) in your job descriptions.`,
+Our AI provider does not use API inputs to train its models by default. We recommend you do not include highly sensitive personal information (e.g. national ID numbers, financial details) in your job descriptions.`,
   },
   {
     id: "analytics",

@@ -1,3 +1,5 @@
+import Logo from "@/components/Logo";
+
 const LINKS: Record<string, { label: string; href: string }[]> = {
   Product: [
     { label: "Features",     href: "/#features" },
@@ -6,10 +8,11 @@ const LINKS: Record<string, { label: string; href: string }[]> = {
     { label: "Resume Builder", href: "/#builder" },
   ],
   Resources: [
-    { label: "Resume tips",   href: "/#features" },
-    { label: "ATS guide",     href: "/#features" },
-    { label: "Interview prep", href: "/#features" },
-    { label: "Sitemap",       href: "/sitemap-page" },
+    { label: "Blog",                href: "/blog" },
+    { label: "ATS guide",           href: "/blog/what-is-ats" },
+    { label: "Resume tips",         href: "/blog/resume-mistakes-to-avoid" },
+    { label: "AI resume builder",   href: "/blog/ai-resume-builder-guide" },
+    { label: "Sitemap",             href: "/sitemap-page" },
   ],
   Company: [
     { label: "About us",   href: "/about"   },
@@ -26,11 +29,8 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-2 font-serif text-[18px] text-brand-900 mb-3">
-              <div className="relative w-6 h-6 bg-accent-gold rounded-[5px] flex items-center justify-center">
-                <div className="absolute inset-[4px] border-[1.5px] border-brand-900 rounded-[1px]" />
-              </div>
-              Resumé.ai
+            <div className="mb-3">
+              <Logo size="sm" />
             </div>
             <p className="text-[13px] text-gray-400 leading-relaxed max-w-[200px]">
               AI-powered resumes that land interviews — built for modern job seekers.
@@ -59,8 +59,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Resumé.ai · All rights reserved.
           </p>
           <p className="text-[12px] text-gray-400">
-            Made with ♥ using{" "}
-            <span className="font-medium text-gray-500">Claude AI</span>
+            Made with ♥ by{" "}
+            <span className="font-medium text-gray-500">Tanzeel Abbas</span>
           </p>
         </div>
       </div>

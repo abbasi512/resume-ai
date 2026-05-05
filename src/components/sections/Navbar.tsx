@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import Logo from "@/components/Logo";
 
 const SCROLL_LINKS = [
   { label: "Features", id: "features" },
@@ -45,12 +46,7 @@ export default function Navbar() {
       <div className="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-[60px]">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 font-serif text-[20px] text-brand-900 select-none hover:opacity-80 transition-opacity">
-          <div className="relative w-7 h-7 bg-accent-gold rounded-[6px] flex items-center justify-center">
-            <div className="absolute inset-[5px] border-2 border-brand-900 rounded-[2px]" />
-          </div>
-          Resumé.ai
-        </Link>
+        <Logo size="md" />
 
         {/* Desktop links */}
         <div className="hidden md:flex items-center gap-1">
